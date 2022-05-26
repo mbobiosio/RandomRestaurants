@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="restaurant"
+            type="com.mbobiosio.restaurants.data.model.Restaurant" />
+    </data>
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardUseCompatPadding="true"
+        style="@style/Widget.Material3.CardView.Elevated">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="4dp">
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/image_view_logo"
+                logo="@{restaurant.logo}"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/_150sdp"
+                android:scaleType="fitXY"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:shapeAppearance="@style/logoShape"
+                tools:src="@mipmap/ic_launcher" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/layout_background"
+                app:layout_constraintBottom_toBottomOf="@+id/image_view_logo"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent">
+
+                <TextView
+                    android:id="@+id/text_view_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:fontFamily="@font/nunito_sans_semibold"
+                    android:text="@{restaurant.name}"
+                    android:textSize="@dimen/_11ssp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="Restaurant Name" />
+
+                <TextView
+                    android:id="@+id/text_view_type"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/nunito_sans"
+                    android:text="@{restaurant.type}"
+                    android:textSize="@dimen/_9ssp"
+                    app:layout_constraintStart_toStartOf="@+id/text_view_name"
+                    app:layout_constraintTop_toBottomOf="@id/text_view_name"
+                    tools:text="Type" />
+
+                <TextView
+                    android:id="@+id/text_view_address"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
+                    android:fontFamily="@font/nunito_sans"
+                    android:text="@{restaurant.address}"
+                    android:textSize="@dimen/_9ssp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/text_view_type"
+                    app:layout_constraintTop_toBottomOf="@id/text_view_type"
+                    tools:text="Address" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
+</layout>
