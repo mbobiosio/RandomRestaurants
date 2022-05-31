@@ -20,7 +20,7 @@ class RestaurantRepoImpl @Inject constructor(
 
     private val restaurantDao = db.restaurantDao()
 
-    override fun getRestaurants() = networkBoundResource(
+    override suspend fun getRestaurants() = networkBoundResource(
         query = {
             restaurantDao.getAllRestaurants()
         },
@@ -35,7 +35,7 @@ class RestaurantRepoImpl @Inject constructor(
             }
         },
         shouldFetch = {
-            true
+            networkHelper.isNetworkAvailable()
         },
         onFetchFailed = {
         }

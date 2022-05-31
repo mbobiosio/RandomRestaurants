@@ -9,5 +9,5 @@ import kotlinx.coroutines.flow.Flow
  * https://linktr.ee/mbobiosio
  */
 interface RestaurantRepository {
-    fun getRestaurants(): Flow<Resource<List<Restaurant>>>
+    suspend fun getRestaurants(): Flow<Resource<List<Restaurant>>>
 }

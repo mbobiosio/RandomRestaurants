@@ -30,7 +30,7 @@ class FakeRepository : RestaurantRepository {
     private val result: Resource<List<Restaurant>> =
         Resource.Success(mockRestaurant)
 
-    override fun getRestaurants(): Flow<Resource<List<Restaurant>>> = flow {
+    override suspend fun getRestaurants(): Flow<Resource<List<Restaurant>>> = flow {
         this.emit(result)
     }
 }

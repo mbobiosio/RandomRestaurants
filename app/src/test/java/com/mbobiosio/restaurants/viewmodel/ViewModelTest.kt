@@ -5,7 +5,6 @@ import com.mbobiosio.restaurants.MainCoroutineRule
 import com.mbobiosio.restaurants.data.model.Restaurant
 import com.mbobiosio.restaurants.data.source.repository.RestaurantRepository
 import com.mbobiosio.restaurants.presentation.restaurants.RestaurantViewModel
-import com.mbobiosio.restaurants.util.Event
 import com.mbobiosio.restaurants.util.Resource
 import com.mbobiosio.restaurants.util.getValue
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -19,6 +18,7 @@ import org.mockito.Mock
 import org.mockito.Mockito
 import org.mockito.MockitoAnnotations
 import org.mockito.junit.MockitoJUnitRunner
+import org.mockito.kotlin.verify
 
 /**
  * @Author Mbuodile Obiosio
@@ -69,11 +69,11 @@ class ViewModelTest {
             )
 
         viewModel.getRestaurants()
-        Mockito.verify(repository).getRestaurants()
+        verify(repository).getRestaurants()
         Assert.assertNotNull(getValue(viewModel.restaurants).data)
         Assert.assertEquals(
             getValue(viewModel.restaurants)::class.java,
-            Event(Resource.Success::class.java)::class.java
+            Resource.Success::class.java
         )
     }
 }
