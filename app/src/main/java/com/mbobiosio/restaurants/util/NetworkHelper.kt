@@ -12,7 +12,7 @@ import javax.inject.Singleton
  */
 @Suppress("DEPRECATION")
 @Singleton
-class NetworkHelper(private val context: Context) {
+open class NetworkHelper(private val context: Context) {
 
     fun isNetworkAvailable(): Boolean {
         val connectivityManager = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
